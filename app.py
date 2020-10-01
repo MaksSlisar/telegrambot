@@ -9,6 +9,6 @@ op.add_argument("--no-sandbox")
 
 driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=op)
 
-driver.get('http://www.google.com')
-print(driver.find_element_by_class_name("gNO89b").text)
+driver.get('https://www.hltv.org/')
+print(driver.find_element_by_class_name("newsheader").text)
 driver.quit()
