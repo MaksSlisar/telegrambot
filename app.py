@@ -81,5 +81,5 @@ while True:
     print("идем парсить")
     csgomatches()
     print("запарсено")
-    time.sleep(16.4)
+    time.sleep(0.4)
 
