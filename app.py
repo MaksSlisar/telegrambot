@@ -48,7 +48,7 @@ def mailing(link):
 
 def csgomatches():
     op = webdriver.ChromeOptions()
-    op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+    op.binary_location = os.environ.get("GOOGLE_CHROME_BIN", port=int(os.environ.get('PORT', 5000)))
     op.add_argument("--headless")
     op.add_argument("--disable-dev-sh-usage")
     op.add_argument("--no-sandbox")
