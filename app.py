@@ -61,7 +61,7 @@ def csgomatches():
     driver.get('https://www.hltv.org/')
     cont = driver.find_element_by_class_name("standard-list")
 
-    links = cont.find_elements_by_tag_name("a")
+    links = cont.find_elements_by_tag_name("a")#
 
     arr = read()
     print(len(links))
