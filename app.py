@@ -55,7 +55,7 @@ def csgomatches():
 
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
     # driver = webdriver.Chrome('chromedriver', chrome_options=op)
-
+    #sdgdgv
     driver.get('https://www.hltv.org/')
     cont = driver.find_element_by_class_name("standard-list")
 
