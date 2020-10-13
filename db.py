@@ -40,9 +40,9 @@ def insertUserId(id, name):
 
         cursor = cnx.cursor()
         cursor.execute(mySql_insert_query)
+        cnx.commit()
     except IntegrityError:
         pass
-    cnx.commit()
     cnx.close()
 def readUsers():
     cnx = mysql.connector.connect(user='tfbs5ukkslz22vzy', password='aptludv1rylm9qq3',

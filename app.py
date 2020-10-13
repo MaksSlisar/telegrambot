@@ -36,7 +36,6 @@ def welcomeAnswer():
         name = messages[i]['message']["chat"]["first_name"]
         if userMsg == "/start":
             print("новые пользователи исследованы")
-            sendMessage(chatid, "Hi")
             insertUserId(chatid, name)
     size = len(messages)
 
@@ -56,8 +55,8 @@ def csgomatches():
     op.add_argument('--ignore-certificate-errors')
     op.add_argument('--incognito')
 
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
-    # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
+    # driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
+    driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
 
     driver.get('https://www.hltv.org/')
     cont = driver.find_element_by_class_name("standard-list")
@@ -74,15 +73,15 @@ def csgomatches():
                 isPresent = True
                 break
         if isPresent == False:  #
-            insert(i.get_attribute("href"))  #
             sendMsgs(i.get_attribute("href")) #
+            insert(i.get_attribute("href"))  #
 
     driver.quit()
 
 def sendMsgs(msg):
     usersId = readUsers()
     for i in usersId:
-        sendMessage(str(i), msg)
+        sendMessage(str(i[0]), msg)
 
 while True:
     print("идем парсить")
