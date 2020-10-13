@@ -52,20 +52,21 @@ def csgomatches():
     op.add_argument("--headless")
     op.add_argument("--disable-dev-sh-usage")
     op.add_argument("--no-sandbox")
+    op.add_argument('--ignore-certificate-errors')
+    op.add_argument('--incognito')
 
     driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
-    # driver = webdriver.Chrome('chromedriver', chrome_options=op)
-    #sdgdgv
+    # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
+
     driver.get('https://www.hltv.org/')
     cont = driver.find_element_by_class_name("standard-list")
 
     links = cont.find_elements_by_tag_name("a")
 
     arr = read()
-
+    print(len(links))
+    print(len(arr))
     for i in links:
-        # print(i.get_attribute("href"))
-
         isPresent = False
         for k in arr:
             if k[0] == i.get_attribute("href"):
@@ -82,4 +83,3 @@ while True:
     csgomatches()
     print("запарсено")
     time.sleep(16.4)
-
