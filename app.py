@@ -35,6 +35,7 @@ def welcomeAnswer():
         chatid = messages[i]['message']['chat']['id']
         name = messages[i]['message']["chat"]["first_name"]
         if userMsg == "/start":
+            print("новые пользователи исследованы")
             sendMessage(chatid, "Hi")
             insertUserId(chatid, name)
     size = len(messages)
@@ -74,13 +75,22 @@ def csgomatches():
                 break
         if isPresent == False:  #
             insert(i.get_attribute("href"))  #
-            sendMessage(1204383766, i.get_attribute("href"))  #
+            sendMsgs(i.get_attribute("href")) #
 
     driver.quit()
+
+def sendMsgs(msg):
+
+    # sendMessage(1204383766,msg )
+    usersId = readUsers()# [134163,13513351,13541]
+    for i in usersId:# i=13541
+        sendMessage(i, msg)
 
 while True:
     print("идем парсить")
     csgomatches()
     print("запарсено")
+    welcomeAnswer()
+
     time.sleep(16.4)
 
