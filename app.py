@@ -83,3 +83,7 @@ while True:
     csgomatches()
     print("запарсено")
     time.sleep(16.4)
+
+
+if __name__ == "__main__":
+    app.run()
