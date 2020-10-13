@@ -86,15 +86,16 @@ def sendMsgs(msg):
 
 
 app = Flask(__name__)
+app.run(os.environ.get('PORT'))
 
-def hero():
-    while True:
-        print("идем парсить")
-        csgomatches()
-        print("запарсено")
-        print("идем за новыми падованами")
 
-        welcomeAnswer()
+while True:
+    print("идем парсить")
+    csgomatches()
+    print("запарсено")
+    print("идем за новыми падованами")
 
-        time.sleep(16.4)
+    welcomeAnswer()
+
+    time.sleep(16.4)
 
