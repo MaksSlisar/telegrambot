@@ -80,11 +80,9 @@ def csgomatches():
     driver.quit()
 
 def sendMsgs(msg):
-
-    # sendMessage(1204383766,msg )
-    usersId = readUsers()# [134163,13513351,13541]
-    for i in usersId:# i=13541
-        sendMessage(i, msg)
+    usersId = readUsers()
+    for i in usersId:
+        sendMessage(str(i), msg)
 
 while True:
     print("идем парсить")
