@@ -90,6 +90,8 @@ while True:
     print("идем парсить")
     csgomatches()
     print("запарсено")
+    print("идем за новыми падованами")
+
     welcomeAnswer()
 
     time.sleep(16.4)
