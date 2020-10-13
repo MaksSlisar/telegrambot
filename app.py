@@ -1,6 +1,7 @@
 import json
 import time
 
+import Flask as Flask
 from pip._vendor import requests
 from db import read, insert, insertUserId, readUsers
 
@@ -83,13 +84,17 @@ def sendMsgs(msg):
     for i in usersId:
         sendMessage(str(i[0]), msg)
 
-while True:
-    print("идем парсить")
-    csgomatches()
-    print("запарсено")
-    print("идем за новыми падованами")
 
-    welcomeAnswer()
+app = Flask(__name__)
 
-    time.sleep(16.4)
+def hero():
+    while True:
+        print("идем парсить")
+        csgomatches()
+        print("запарсено")
+        print("идем за новыми падованами")
+
+        welcomeAnswer()
+
+        time.sleep(16.4)
 
