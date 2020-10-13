@@ -55,8 +55,8 @@ def csgomatches():
     op.add_argument('--ignore-certificate-errors')
     op.add_argument('--incognito')
 
-    # driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
-    driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
+    # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
 
     driver.get('https://www.hltv.org/')
     cont = driver.find_element_by_class_name("standard-list")
