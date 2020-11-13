@@ -1,7 +1,7 @@
 import json
 import time
 
-import Flask as Flask
+
 from pip._vendor import requests
 from db import read, insert, insertUserId, readUsers
 
