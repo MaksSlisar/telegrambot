@@ -1,12 +1,10 @@
 import json
 import time
 
-
+import Flask as Flask
 from pip._vendor import requests
-from selenium.webdriver import DesiredCapabilities
-
 from db import read, insert, insertUserId, readUsers
-from selenium.webdriver.common.proxy import *
+
 size = 0
 name = "Lviv"
 key = "c09888259b05a470a1e1d99d48c9b887"
@@ -89,7 +87,7 @@ def sendMsgs(msg):
         sendMessage(str(i[0]), msg)
 
 
-
+app = Flask(__name__)
 
 
 while True:
