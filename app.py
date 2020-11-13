@@ -1,10 +1,12 @@
 import json
 import time
 
-import Flask as Flask
-from pip._vendor import requests
-from db import read, insert, insertUserId, readUsers
 
+from pip._vendor import requests
+from selenium.webdriver import DesiredCapabilities
+
+from db import read, insert, insertUserId, readUsers
+from selenium.webdriver.common.proxy import *
 size = 0
 name = "Lviv"
 key = "c09888259b05a470a1e1d99d48c9b887"
@@ -48,6 +50,7 @@ def mailing(link):
 
 
 def csgomatches():
+    PROXY = "138.197.105.27:3128	"  # IP:PORT or HOST:PORT
     op = webdriver.ChromeOptions()
     op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     op.add_argument("--headless")
@@ -55,8 +58,9 @@ def csgomatches():
     op.add_argument("--no-sandbox")
     op.add_argument('--ignore-certificate-errors')
     op.add_argument('--incognito')
+    op.add_argument('--proxy-server=%s' % PROXY)
 
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op)
     # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
 
     driver.get('https://www.hltv.org/')
@@ -85,16 +89,16 @@ def sendMsgs(msg):
         sendMessage(str(i[0]), msg)
 
 
-app = Flask(__name__)
 
-def hero():
-    while True:
-        print("идем парсить")
-        csgomatches()
-        print("запарсено")
-        print("идем за новыми падованами")
 
-        welcomeAnswer()
 
-        time.sleep(16.4)
+while True:
+    print("идем парсить")
+    csgomatches()
+    print("запарсено")
+    print("идем за новыми падованами")
+
+    welcomeAnswer()
+
+    time.sleep(16.4)
 
