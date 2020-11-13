@@ -87,9 +87,6 @@ def sendMsgs(msg):
         sendMessage(str(i[0]), msg)
 
 
-app = Flask(__name__)
-
-
 while True:
     print("идем парсить")
     csgomatches()
