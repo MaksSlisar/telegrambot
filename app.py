@@ -1,7 +1,8 @@
 import json
 import time
+from asyncio import Queue
 
-
+import Redis as Redis
 from pip._vendor import requests
 from db import read, insert, insertUserId, readUsers
 
@@ -86,14 +87,18 @@ def sendMsgs(msg):
     for i in usersId:
         sendMessage(str(i[0]), msg)
 
+def main():
 
-while True:
-    print("идем парсить")
-    csgomatches()
-    print("запарсено")
-    print("идем за новыми падованами")
+    while True:
+        print("идем парсить")
+        csgomatches()
+        print("запарсено")
+        print("идем за новыми падованами")
 
-    welcomeAnswer()
+        welcomeAnswer()
 
-    time.sleep(16.4)
+        time.sleep(16.4)
 
+redis_conn = Redis()
+queue = Queue(connection=redis_conn)
+job = queue.enqueue(main())
