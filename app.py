@@ -1,8 +1,7 @@
 import json
 import time
-from asyncio import Queue
 
-import Redis as Redis
+
 from pip._vendor import requests
 from db import read, insert, insertUserId, readUsers
 
@@ -49,7 +48,7 @@ def mailing(link):
 
 
 def csgomatches():
-    PROXY = "138.197.105.27:3128	"  # IP:PORT or HOST:PORT
+    PROXY = "128.199.183.34:8080"  # IP:PORT or HOST:PORT
     op = webdriver.ChromeOptions()
     op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     op.add_argument("--headless")
@@ -59,8 +58,8 @@ def csgomatches():
     op.add_argument('--incognito')
     op.add_argument('--proxy-server=%s' % PROXY)
 
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, PORT=5000)
-    # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
+    # driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, PORT=5000)
+    driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
 
     driver.get('https://www.hltv.org/')
     cont = driver.find_element_by_class_name("standard-list")
@@ -87,18 +86,14 @@ def sendMsgs(msg):
     for i in usersId:
         sendMessage(str(i[0]), msg)
 
-def main():
 
-    while True:
-        print("идем парсить")
-        csgomatches()
-        print("запарсено")
-        print("идем за новыми падованами")
+while True:
+    print("идем парсить")
+    csgomatches()
+    print("запарсено")
+    print("идем за новыми падованами")
 
-        welcomeAnswer()
+    welcomeAnswer()
 
-        time.sleep(16.4)
+    time.sleep(16.4)
 
-redis_conn = Redis()
-queue = Queue(connection=redis_conn)
-job = queue.enqueue(main())
