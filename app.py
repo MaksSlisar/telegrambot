@@ -58,11 +58,14 @@ def csgomatches():
     op.add_argument('--incognito')
     op.add_argument('--proxy-server=%s' % PROXY)
 
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
-    #driver = webdriver.Chrome(executable_path='driver.exe', chrome_options=op)
+    # driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
+    driver = webdriver.Chrome(executable_path='driver.exe', chrome_options=op)
 
     driver.get('https://www.hltv.org/')
-    cont = driver.find_element_by_class_name("standard-list")
+    try:
+        cont = driver.find_element_by_class_name("standard-list")
+    except:
+        return ;
 
     links = cont.find_elements_by_tag_name("a")#
 
