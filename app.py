@@ -48,7 +48,7 @@ def mailing(link):
 
 
 def csgomatches():
-    PROXY = "176.9.85.13:3128	"  # IP:PORT or HOST:PORT
+    PROXY = "124.121.185.153:3128"  # IP:PORT or HOST:PORT
     op = webdriver.ChromeOptions()
     op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     op.add_argument("--headless")
@@ -58,8 +58,8 @@ def csgomatches():
     op.add_argument('--incognito')
     op.add_argument('--proxy-server=%s' % PROXY)
 
-    #driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
-    driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
+    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
+    #driver = webdriver.Chrome(executable_path='driver.exe', chrome_options=op)
 
     driver.get('https://www.hltv.org/')
     cont = driver.find_element_by_class_name("standard-list")
