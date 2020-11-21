@@ -48,7 +48,7 @@ def mailing(link):
 
 
 def csgomatches():
-    PROXY = "103.209.65.12:6666"  # IP:PORT or HOST:PORT
+    PROXY = "176.9.85.13:3128	"  # IP:PORT or HOST:PORT
     op = webdriver.ChromeOptions()
     op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     op.add_argument("--headless")
@@ -58,8 +58,8 @@ def csgomatches():
     op.add_argument('--incognito')
     op.add_argument('--proxy-server=%s' % PROXY)
 
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
-    # driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
+    #driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
+    driver = webdriver.Chrome(executable_path='chromedriver.exe', chrome_options=op)
 
     driver.get('https://www.hltv.org/')
     cont = driver.find_element_by_class_name("standard-list")
@@ -96,4 +96,5 @@ while True:
     welcomeAnswer()
 
     time.sleep(16.4)
+# heroku ps:scale web=1
 
