@@ -48,7 +48,7 @@ def mailing(link):
 
 
 def csgomatches():
-    PROXY = "124.121.185.153:3128"  # IP:PORT or HOST:PORT
+    PROXY = "85.14.243.31:3128"  # IP:PORT or HOST:PORT
     op = webdriver.ChromeOptions()
     op.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     op.add_argument("--headless")
