@@ -45,7 +45,7 @@ def mailing(link):
     users = readUsers()
     for i in users:
         sendMessage(i[0], link)
-
+    # sendMessage("829939680", link)
 
 def csgomatches():
     PROXY = "85.14.243.31:3128"  # IP:PORT or HOST:PORT
@@ -58,8 +58,8 @@ def csgomatches():
     op.add_argument('--incognito')
     op.add_argument('--proxy-server=%s' % PROXY)
 
-    driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
-    # driver = webdriver.Chrome(executable_path='driver.exe', chrome_options=op)
+    # driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=op, port=5000)
+    driver = webdriver.Chrome(executable_path='driver.exe', chrome_options=op)
 
     driver.get('https://www.hltv.org/')
     try:
