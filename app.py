@@ -20,6 +20,7 @@ def getTemperature():
     return result
 def sendMessage(chatid, message):
     r = requests.get(api + "sendMessage?chat_id=" + str(chatid) + "&text=" + message)
+    #todo save msg id
 
 def getUpdate():
     result = requests.get(api + "getUpdates")
@@ -90,14 +91,21 @@ def sendMsgs(msg):
         sendMessage(str(i[0]), msg)
 
 
-while True:
-    print("идем парсить")
-    csgomatches()
-    print("запарсено")
-    print("идем за новыми падованами")
 
-    welcomeAnswer()
 
-    time.sleep(16.4)
+def editMsgtxt(chat_id,message_id, text):
+    r = requests.get(api + "editMessageText?chat_id=" + str(chat_id) + "&message_id=" + str(message_id) + "&text=" + text)
+    print(r)
+
+
+# while True:
+#     print("идем парсить")
+#     csgomatches()
+#     print("запарсено")
+#     print("идем за новыми падованами")
+#
+#     welcomeAnswer()
+#
+#     time.sleep(16.4)
 # heroku ps:scale web=1
 
